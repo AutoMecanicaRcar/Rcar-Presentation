@@ -1,0 +1,778 @@
+/* Geral */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --hue: 358;
+
+    --primary-color: hsl(var(--hue),100%,30%);
+    --headline:hsl(210, 11%, 15%);
+    --paragraph:hsl(210,9%,31%);
+    --brand-light: hsl(35, 15%, 90%);
+    --brand-light2: hsl(calc(var(--hue) + 10),14%,97%);
+    --brand-dark:hsl(var(--hue), 85%, 55%);
+
+    --nav-height:7.2rem;
+
+    font-size: 62.5%; /*1rem = 10px*/
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    font-size: 1.6rem;
+    background-color: white;
+    font-family: 'DM Sans';
+    text-align: center;
+    overflow: overlay;
+}
+
+.wrapper{
+    width: min(50rem,100%);
+    margin-inline: auto;
+    padding-inline: 2.4rem;
+}
+
+ul{
+    list-style: none;
+}
+
+img{
+    max-width: 100%;
+}
+
+section{
+    padding-block: 10rem;
+}
+
+section header h1{
+    font-size: 3.4rem;
+    line-height: 130%;
+    margin-bottom: 2.4rem;
+    color: var(--headline);
+}
+
+section header h2{
+    font-size: 3rem;
+    line-height: 3.9rem;
+    margin-bottom: 6rem;
+    color: var(--headline);
+}
+
+section header h4{
+    font-size: 1.4rem;
+    line-height: 150%;
+    margin-bottom: 1.6rem;
+    color: var(--primary-color);
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+}
+
+section .content p{
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 150%;
+    color: var(--paragraph);
+}
+
+.button{
+    width: fit-content;
+    font-size: 1.4rem;
+    padding: 1.6rem 3.2rem;
+    margin-bottom: 6rem;
+
+    background-color: var(--primary-color);
+    color: white;
+
+    border-radius: 4rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 200ms;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+.button:hover{
+    background-color: var(--brand-dark);
+}
+
+.socialLinks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3.2rem;
+}
+
+#shadow-host-companion{
+    padding: 0;
+}
+
+/* Custom colors */
+#backToTopButton circle, #navigation .logo path[fill*="#00856F"]{
+    fill: var(--primary-color);
+}
+
+#contact li path, .openMenu path[stroke*="#00856F"]{
+    stroke: var(--primary-color);
+}
+
+#navigation.scroll .logo path{
+    fill: white;
+}
+
+#navigation.scroll .openMenu path[stroke*="#00856F"]{
+    stroke: white;
+}
+/* Navigation */
+nav{
+    width: 100vw;
+    height: var(--nav-height);
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+nav .wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav.scroll{ 
+    background-color: var(--primary-color);
+}
+
+nav button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+nav .menu,
+nav .closeMenu{
+    position: fixed;
+}
+
+nav .logo{
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Menu expanded */
+body .menu{
+    transform: translateY(100%);
+}
+
+body.menuExpanded > :not(nav){
+    visibility: hidden;
+}
+
+body.menuExpanded{
+    overflow: hidden;
+}
+
+body.menuExpanded .menu, body.menuExpanded .closeMenu{
+    opacity: 1;
+    visibility: visible;
+}
+
+body.menuExpanded .menu{
+    width: 100vw;
+    height: 100vh;
+    padding-top: var(--nav-height);
+    
+    background-color: var(--primary-color);
+
+    top: 0;
+    left: 0;
+    transition: transform 300ms;
+    transform: translateY(0%);
+}
+
+body.menuExpanded nav button{
+    position: relative;
+    z-index: 2;
+}
+
+body.menuExpanded button path{
+    stroke: white;
+}
+
+.menu, .closeMenu, body.menuExpanded .openMenu{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.menu ul:nth-child(1){
+    font-size: 2.4rem;
+    line-height: 3.1rem;
+    margin-top: 6rem;
+
+    font-weight: 700;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4.8rem;
+}
+
+.menu ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+.menu .button{
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    margin-top: 4.8rem;
+    margin-bottom: 8rem;
+
+    background-color: white;
+    color: var(--primary-color);
+
+    display: inline-block;
+}
+
+.menu .button:hover{
+    background-color: var(--primary-color);
+    color: white;
+    filter: brightness(1.3);
+}
+
+/* Home */
+#home{
+    padding-block: 0;
+    padding-top: calc(4.1rem + var(--nav-height));
+}
+
+#home::before{
+    content: "";
+
+    width: 100%;
+    height: 250%;
+
+    background-color: var(--brand-light);
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#home .content p{
+    font-size: 1.8rem;
+    margin-bottom: 3.2rem;
+}
+
+#home .button{
+    margin-inline: auto;
+}
+
+#home img{
+    width: 26.4rem;
+}
+
+#home .stats{
+    width: 100%;
+    margin-inline: auto;
+    padding-block: 4rem;
+    
+    background-color: white;
+
+    border: 1.8px solid var(--brand-light);
+    border-radius: 0.6rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6rem;
+}
+
+#home .stat h3{
+    font-size: 4.8rem;
+    line-height: 130%;
+    margin-bottom: 0.4rem;
+    color: var(--headline);
+}
+
+#home .stat p{
+    padding-inline:4rem ;
+    font-size: 1.6rem;
+    line-height: 150%;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+/* Services */
+#services header h2{
+    margin-bottom: 6rem;
+}
+
+#services .cards{
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+#services .box{
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#services .card{
+    height: 15rem;
+    padding: .8rem;
+    border: 1px solid var(--brand-light);
+    border-radius: .6rem;
+    text-align: center;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+#services .box:nth-child(1) .card:nth-child(1){
+    background-image: url('../assets/diagnostico_injecao.jpeg');
+}
+
+#services .box:nth-child(2) .card:nth-child(1){
+    background-image: url('../assets/cx_marcha_manual.jpeg');
+}
+
+#services .box:nth-child(3) .card:nth-child(1){
+    background-image: url('../assets/oleo_cambio.jpeg');
+}
+
+#services .box:nth-child(4) .card:nth-child(1){
+    background-image: url('../assets/oleo_motor.jpeg');
+}
+
+#services .box:nth-child(5) .card:nth-child(1){
+    background-image: url('../assets/luz_abs.jpeg');
+}
+
+#services .box:nth-child(6) .card:nth-child(1){
+    background-image: url('../assets/correia.jpeg');  
+}
+
+#services .box:nth-child(7) .card:nth-child(1){
+    background-image: url('../assets/suspensao.jpeg');  
+    background-position:  0 -16rem;
+}
+
+#services .box:nth-child(8) .card:nth-child(1){
+    background-image: url('../assets/freio.jpeg'); 
+}
+
+#services .box:nth-child(9) .card:nth-child(1){
+    background-image: url('../assets/arrefecimento.jpeg');  
+}
+
+#services .box h3{
+    padding: .4rem;
+    font-size: 1.8rem;
+    background: var(--primary-color);
+    color: var(--brand-light);
+    backdrop-filter: blur(.5rem);
+    border: 1px solid var(--primary-color);
+    border-radius: .6rem;
+}
+
+/* About */
+#about{
+    background-color: var(--brand-light);
+    text-align: left;
+}
+
+#about header h2{
+    margin-bottom: 2.4rem;
+}
+
+#about .content p{
+    margin-top: 2.4rem;
+    margin-bottom: 6rem;
+}
+
+#about .colB{
+    align-self: center;
+}
+
+#about img{
+    border-radius: 1.2rem;
+    box-shadow: .15rem .3rem 1.8rem .6rem #00000066;
+}
+
+/* Contact */
+#contact{
+    text-align: left;
+}
+
+#contact header{
+    margin-bottom: 3.2rem;
+}
+
+#contact ul{
+    margin-bottom: 3.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+#contact ul li{
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+#contact .maps{
+    width: 32rem;
+    height: 30rem;
+}
+
+
+/* Footer */
+footer{
+    padding-block: 6rem;
+    background-color: var(--primary-color);
+    text-align: left;
+}
+
+footer .logo{
+    margin-bottom: 2.4rem;
+    display: inline-block;
+}
+
+.logo svg{
+    width: 23.6rem;
+    height: 3.1rem;
+}
+
+footer .logo path{
+    fill: white;
+}
+
+footer p{
+    margin-bottom: 3.2rem;
+    line-height: 2;
+    color: var(--brand-light);
+}
+
+footer .socialLinks{
+    justify-content: flex-start;
+}
+
+/* Back to Top */
+#backToTopButton{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+    transition: 200ms;
+
+    position: fixed;
+    bottom: 1rem;
+    right: 2.5rem;
+}
+
+#backToTopButton.show{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Responsivo */
+@media (min-width: 1024px){
+    /* Geral */
+    body{
+        overflow: auto;
+    }
+
+    .wrapper{
+        width: min(112rem, 100%);
+        display: grid;
+    }
+
+    section{
+        padding-block: 16rem;
+    }
+
+    section header h2{
+        font-size: 4rem;
+        line-height: 5.2rem;
+    }
+
+    .colA{
+        grid-area: A;
+    }
+
+    .colB{
+        grid-area: B;
+    }
+
+    /* Reset */
+    #navigation .wrapper *{
+        margin: 0;
+        padding: 0;
+        visibility: initial;
+        display: initial;
+        opacity: initial;
+        flex-direction: initial;
+        position: initial;
+        font-size: initial;
+        transform: initial;
+        color: initial;
+        background-color: initial;
+        font-weight: initial;
+        filter: initial;
+    }
+
+    #navigation .closeMenu,
+    #navigation .openMenu,
+    #navigation .socialLinks{
+        display: none;
+    }
+
+    /* Navigation */
+    #navigation .menu{
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #navigation .menu ul:nth-child(1){
+        display: flex;
+        gap: 3.2rem;
+    }
+
+    #navigation .menu ul li a{
+        color: var(--primary-color);
+        opacity: 0.7;
+    }
+
+    #navigation .menu a.button{
+        padding: 1rem 2.4rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        border: .1rem solid var(--primary-color);
+        border-radius: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #navigation.scroll .menu ul li a{
+        color: white;
+        opacity: 1;
+    }
+
+    #navigation.scroll .menu a.button{
+        color: white;
+        border-color: white;
+    }
+
+    #navigation .menu ul li a{
+        transition: opacity .4s;
+    }
+
+    #navigation .menu ul li a:hover,
+    #navigation .menu ul li a.active{
+        font-weight: 700;
+        opacity: 1;
+    }
+
+    #navigation .menu ul li a::after{
+        content: '';
+        width: 0%;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width .2s;
+        display: block;
+        position: relative;
+        bottom: -2rem;
+        left: -.5rem;
+    }
+
+    #navigation.scroll .menu ul li a::after{
+        background-color: white;
+    }
+
+    #navigation .menu ul li a:hover:after,
+    #navigation .menu ul li a.active::after{
+        width: 100%;
+        padding-inline: .8rem;
+    }
+
+    #navigation.scroll .menu ul li a:hover,
+    #navigation.scroll .menu ul li a.active{
+        opacity:.6;
+    }
+
+    #navigation .menu a.button:hover{
+        background-color: var(--primary-color);
+        border: none;
+        color: white;
+    }
+
+    #navigation.scroll .menu a.button:hover,
+    nav#navigation.scroll .menu a.button.active{
+        background-color: var(--primary-color);
+        border: none;
+        filter: brightness(1.4);
+    }
+
+    /* Home */
+    #home{
+        padding-left: var(--nav-height);
+    }
+
+    section#home::before{
+        height: 120%;
+    }
+
+    section#home .wrapper{
+        grid-template-columns: 60.5rem 1fr;
+        grid-template-areas: 
+        'A B'
+        'C C';
+    }
+
+    section#home .colA{
+        align-self: center;
+        text-align: left;
+    }
+
+    #home .colB{
+        align-self: top;
+    }
+
+    section#home h1{
+        font-size: 5.2rem;
+    }
+
+    section#home p{
+        font-size: 1.8rem;
+    }
+
+    section#home .stats{
+        padding: 6rem;
+        grid-area: C;
+        flex-direction: row;
+    }
+
+    section#home .stats .stat + .stat{
+        border-left: 1px solid var(--primary-color);
+    }
+
+    section#home .stats .stat{
+        flex: 1;
+        padding-inline-start: 3rem;
+    }
+
+    section#home .stat p{
+        padding-inline: 0;
+        text-align: left;
+    }
+
+    section#home .button{
+        margin: 0;
+    }
+
+    section#home img{
+        width: 42rem;
+    }
+
+    /* Services */
+    section#services h2{
+        width: 47rem;
+        margin-inline: auto;
+    }
+
+    section#services .cards{
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 4rem;
+    }
+
+    section#services .box{
+        width: 30%;
+        flex-grow: 1;
+    }
+
+    section#services .card{
+        width: 100%;
+    }
+
+    /* About */
+    section#about .wrapper{
+        grid-template-columns: 48rem 1fr;
+        grid-template-areas: 'B A';
+        gap: 6.7rem;
+    }
+
+    section#about .colA{
+       align-self: center; 
+    }
+
+    section#about p{
+        margin-bottom: 0;
+        text-align: justify;
+    }
+
+    /* Contact */
+    section#contact .wrapper{
+        grid-template-columns: 1fr 57.5rem;
+        grid-template-areas: 'A B';
+        gap: 6.7rem;
+    }
+
+    section#contact h2{
+        width: 40.4rem;
+    }
+    
+    section#contact .maps{
+        width: 60rem;
+        height: 45rem;
+    }
+
+    /* Footer */
+    footer{
+        padding-block: 8rem;
+    }
+
+    footer .wrapper{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'A B';
+        gap: 6.7rem;
+    }
+
+    footer .colA{
+        align-self: center;
+    }
+
+    footer .colB{
+        align-self: center;
+        justify-self: end;
+    }
+
+    footer p{
+        margin-bottom: 0;
+    }
+}
