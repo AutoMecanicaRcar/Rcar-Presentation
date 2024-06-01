@@ -121,6 +121,12 @@ section .content p{
     padding: 0;
 }
 
+.colB{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
 /* Custom colors */
 #backToTopButton circle, #navigation .logo path[fill*="#00856F"]{
     fill: var(--primary-color);
@@ -277,7 +283,7 @@ body.menuExpanded button path{
 
 #home .content p{
     font-size: 1.8rem;
-    margin-bottom: 3.2rem;
+    margin-bottom: 1.2rem;
 }
 
 #home .button{
@@ -286,6 +292,7 @@ body.menuExpanded button path{
 
 #home img{
     width: 26.4rem;
+    filter: brightness(0.8);
 }
 
 #home .stats{
@@ -660,7 +667,7 @@ footer .socialLinks{
     }
 
     #home .colB{
-        align-self: top;
+        justify-content: end;
     }
 
     section#home h1{
